@@ -1,1 +1,1 @@
-# javascript-exercises
+# JavaScript exercises, examples and notes 📝.
