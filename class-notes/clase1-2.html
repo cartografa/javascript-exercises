@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 2 - Ejercicio 2</title>
+
+    <style>
+        h2 {color: darkblue}
+    </style>
+</head>
+
+<body>
+
+    <h2>
+        Crear una lista desordenada con 10 elementos dentros,
+        utilizando un ciclo for. Tener en cuenta que sólo se puede hacer un único appendChild al ul creado.
+        De esta manera, minimizamos el tiempo de modificaciones en el DOM.
+    </h2>
+
+    <script>
+
+        let ul = document.createElement('ul')
+        for(let i=0; i<10; i++) {
+
+            // SOLUCION DE BAJA PERFORMATIVIDAD:
+            // let li = document.createElement('li')
+            // li.innerHTML = `Elemento ${i+1}`;
+            // ul.appendChild(li);
+            // ------------------------------------
+
+            ul.innerHTML += `<li>Elemento ${i+1}</li>`
+        }        
+        document.body.appendChild(ul)
+
+    </script>
+    
+</body>
+</html>

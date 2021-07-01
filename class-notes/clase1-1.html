@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 2 - Ejercicio 1</title>
+
+    <style>
+        .azul {
+            background-color: cyan;
+            color: orange;
+            border-radius: 15px;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1 class="titulo">JS Av. Clase 2</h1>
+    <!-- ul>li*5{Item $} -->
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+
+    <script>
+        /*--------------------------------------------*/
+        /*      Acceso a H1 (elemento titulo)         */
+        /*--------------------------------------------*/
+
+        var titulo = document.querySelector('h1')
+        //titulo.innerText = 'Titulo creado desde JS'
+        titulo.innerHTML = 'Titulo creado desde <a href="#">JS</a>' //acepta HTML
+
+        titulo.classList.add('azul') // método para crear clase a elemento
+        titulo.classList.remove('azul') // método para remover clase a elemento
+
+        titulo.id = 'titulo' // agrega un ID
+
+        /*--------------------------------------------*/
+        /*            Acceso a la lista ul            */
+        /*--------------------------------------------*/
+        
+        var items = document.querySelectorAll('li')
+        console.log(items)
+
+        const colores = ['red', 'blue', 'green', 'magenta', 'orangered'];
+        for (let i=0; i<items.length; i++) {
+            items[i].innerHTML = `Elemento Nro. <b>${i+1}</b>`;
+            items[i].style.color = colores[i];
+            items[i].style.backgroundColor = '#888';
+            console.log('holi')
+        }
+
+        /*--------------------------------------------*/
+        /*      Creación de un elemento párrafo       */
+        /*--------------------------------------------*/
+
+        var parrafo = document.createElement('p');
+        parrafo.innerText = 'Hola, soy un párrafo';
+        parrafo.style.color = 'darkblue'
+        parrafo.style.backgroundColor = 'orange'
+        parrafo.style.padding = '2rem'
+        parrafo.style.fontSize = '1.5rem'
+        parrafo.id = 'parrafo'
+        parrafo.classList.add('txt')
+
+        document.body.appendChild(parrafo)
+
+
+    </script>
+
+    
+</body>
+</html>
