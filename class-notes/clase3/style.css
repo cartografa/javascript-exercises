@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+input,
+div {
+    width: 15em;
+}
+
+div {
+    border: 1px solid tan;
+    background-color: tomato;
+    padding: 5px;
+    margin: 2px 0 10px 0;
+    border-radius: 15px;
+}
+
+button {
+    display: block;
+    margin-top: 7px;
+}
+

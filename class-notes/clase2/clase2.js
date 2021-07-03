@@ -194,6 +194,7 @@ google.addEventListener('click', (e) => {
     console.log('Click en Link!')
 })
 
+
 /* ------------------------------------------------------- */
 console.log('\n/* Manipulación del DOM con un evento del BOM */')
 /* ------------------------------------------------------- */
@@ -205,3 +206,43 @@ window.addEventListener('resize', () => {
     Las dimensiones externas son ${outerWidth} pixeles de ancho por ${outerHeight} pixeles de altura. <br>
     Las dimensiones internas son ${innerWidth} pixeles de ancho por ${innerHeight} pixeles de altura. <br>`
 })
+
+
+/* ------------------------------------------------------- */
+console.log('\n/* Eventos CUSTOM (customizados) */')
+/* ------------------------------------------------------- */
+
+// 1) Creación del Evento
+let ev1 = new Event('look1', {'bubbles': true, 'cancelable': false})
+let ev2 = new Event('look2', {'bubbles': true, 'cancelable': false})
+let ev3 = new Event('look3', {'bubbles': true, 'cancelable': false})
+
+
+// 2) Resgistro del evento look1, utilizando addEventListener
+document.addEvelentListener('look1', () => {
+    console.log('look1')
+    document.dispatchEvent(ev2)
+})
+
+document.addEvelentListener('look2', () => {
+    console.log('look2')
+})
+
+document.addEvelentListener('look3', () => {
+    console.log('look3')
+})
+// 3) Dispatch del evento look1
+// let btnLook = document.getElementById('btn-look')
+// btnLook.addEventListener('click', () => {
+//     document.dispatchEvent(ev1)
+// })
+
+// opción sin referenciar el elemento en una variable (chain)
+document.getElementById('btn-look').addEventListener('click', () => {
+    document.dispatchEvent(ev1)
+})
+
+setInterval(() => {
+    console.warn('FechaHora: ${new Date().toLocaleString()}')
+    document.dispatchEvent(ev3)
+}, 2000)
