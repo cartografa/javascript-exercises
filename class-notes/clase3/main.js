@@ -85,16 +85,55 @@ function validarInput(valor) {
     return valor
 }
 
+
+function verificarInputRegEx(valor) {
+    /* ------------------------------------------------- */
+    /*     EJEMPLO DE VALIDACIÓN DE NOMBRE CON REGEX     */
+    /* ------------------------------------------------- */
+//     let validadorNombre = /^[A-Z][a-z]{2,9}$/
+
+//     if (!validadorNombre.test(valor)) {
+//         let mensaje = "Este campo no es válido"
+
+//         let lg = valor.lenght
+//         if(lg == 0) mensaje = 'Este campo es obligatorio'
+//         else if (lg < 3) mensaje = 'Este campo debe poseer al menos 3 caracteres'
+//         else if (lg > 10) mensaje = 'Este campo debe poseer como máximo 10 caracters'
+
+
+//         input.setCustomValidityJS(mensaje)
+//         return null
+//     }
+//     input.setCustomValidityJS('')
+//     return valor
+// }
+    /* ------------------------------------------------- */
+    /*          EJEMPLO DE VALIDACIÓN DE EMAIL           */
+    /* ------------------------------------------------- */
+    let validadorEmail = /^[a-zA-Z0-9]+@\w+\.\w{2,3}(\.(ar|uy))?$/
+
+    if (!(validadorEmail.test(valor))) {
+        let mensaje = "Debe escribir un email válido"
+
+        input.setCustomValidityJS(mensaje)
+        return null
+    }
+    input.setCustomValidityJS('')
+    return valor
+}
+
 // validación en tiempo real
 input.addEventListener('input', () => {
     //console.log(input.value)
-    validarInput(input.value)
+    // validarInput(input.value)
+    verificarInputRegEx(input.value)
+
 })
 
 form.addEventListener('submit', e => {
     e.preventDefault()
 
-    let valor = validarInput(input.value)
+    let valor = verificarInputRegEx(input.value)
     if (valor) {
         input.value = ''
         console.log('Submit', '['+valor+']')
@@ -108,12 +147,12 @@ form.addEventListener('submit', e => {
 // regex101.com
 
 // let miRegExp = new RegExp('ab c', 'i') //Forma declarativa tipo objeto
-let miRegExp = /ab c/                     //Forma declarativa literal
+// let miRegExp = /ab c/                     //Forma declarativa literal
 
-let mensaje = 'aB c'
+// let mensaje = 'aB c'
 
-let valido = miRegExp.test(mensaje)
-console.log('Mensaje', mensaje, valido)
+// let valido = miRegExp.test(mensaje)
+// console.log('Mensaje', mensaje, valido)
 
 
 
