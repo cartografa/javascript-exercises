@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+}
+
+button {
+    font-size: 1.2em;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: all 1s ease-out; 
+}
