@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio AJAX</title>
+</head>
+<body>
+    
+    <hr>
+
+    <h3>
+        Se necesita crear un mecanismo que permita inyectar codigo HTML dentro de mi página web. 
+        Considerar que este codigo se encuentra almacenado en un archivo externo.
+        la idea es disponer de un botón que cargue ese contenido en forma dinámica.
+    </h3>
+
+    <hr>
+
+    <button>Cargar contenido</button>
+    <button>Remover contenido</button>
+
+    <header>
+        <h1>Mi Página</h1>
+    </header>   
+
+    <main></main>
+
+    <footer>@Copyright blablabla</footer>
+
+    <script>
+        let btnCargar = document.querySelectorAll('button')[0];
+        let btnRemover = document.querySelectorAll('button')[1];
+        let main = document.querySelector('main');
+        // let plantillaCargada = false;
+
+        btnRemover.disabled = true;
+
+        btnRemover.addEventListener('click', () => {
+            console.log('Click en botón remover')
+
+            let div = document.querySelector('div');
+            main.removeChild(div);
+
+            btnRemover.disabled = true;
+            btnCargar.disabled = false;
+        })
+    
+        btnCargar.addEventListener('click', () => {
+            console.log('Click en botón cargar');
+
+            // if(!plantillaCargada) {
+                let xhr = new XMLHttpRequest;
+                xhr.open('get', 'plantilla.html');
+                xhr.addEventListener('load', () => {
+                    if(xhr.status == 200) {
+                        let plantilla = xhr.response;
+                        console.log(plantilla);
+
+                        let div = document.createElement('div');
+                        div.innerHTML = plantilla;
+                        main.appendChild(div);
+
+                        // plantillaCargada = true;
+
+                        btnCargar.disabled = true;
+                        btnRemover.disabled = false;
+                    }
+                    else console.error('Error de comunicación: ' + xhr.status)
+
+                })
+                xhr.send();
+            // }
+        })
+
+    </script>
+
+</body>
+</html>
