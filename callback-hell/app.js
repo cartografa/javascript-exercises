@@ -69,7 +69,7 @@ const moveX = (element, amount, delay) => {
             const currLeft = element.getBoundingClientRect().left;
         
             if (elRight + amount > bodyBoundary) {
-                reject();
+                reject({bodyBoundary, elRight, amount});
             } 
             else {      
                 element.style.transform = `translateX(${currLeft + amount}px)`;
@@ -95,6 +95,21 @@ moveX(btn, 300, 1000)
     .then(() => {
         console.log('DONE WITH MOVING');
     })
-    .catch(() => {
-        console.log('OUT OF SPACE. CANNOT MOVE')
+    .catch(({bodyBoundary, amount, elRight}) => {
+        console.log(`Body is ${bodyBoundary}px wide`)
+        console.log(`Element is at ${elRight}px, ${amount}px is too large!`)   
     })
+
+// MORE COMPACT WAY:
+// moveX(btn, 300, 1000)
+//     .then(() => moveX(btn, 300, 1000))
+//     .then(() => moveX(btn, 300, 1000))
+//     .then(() => moveX(btn, 300, 1000))
+//     .then(() => moveX(btn, 300, 1000))
+//     .then(() => moveX(btn, 300, 1000))
+//     .then(() => moveX(btn, 300, 1000))
+//     .then(() => moveX(btn, 300, 1000))
+//     .catch(({bodyBoundary, amount, elRight}) => {
+//          console.log(`Body is ${bodyBoundary}px wide`)
+//          console.log(`Element is at ${elRight}px, ${amount}px is too large!`)   
+//     })
